@@ -1,0 +1,66 @@
+{% extends 'admin/base.html' %}
+{% block head %}
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+{% endblock %}
+{% block body %}
+<div><a href="https://7052.lnsigo.mipt.ru/autoindex/#/dp_agent_alexa_data/dialogs_dumps_txt">Dialogs hourly dumps</a>
+</div>
+<div><a href="http://ec2-3-90-214-142.compute-1.amazonaws.com/admin/">Dialogs analysis tool</a></div>
+<div><a href="https://7052.lnsigo.mipt.ru/ab_tests/ab_tests_main.html">A/B tests</a></div>
+<div><a href="http://192.168.10.54:1337/link_to_plot">link_to plots</a></div>
+<br/>Plots:
+<ul>
+    <li><a href="#hrly_dialogs_ratings_fig_div">Number of dialogs with ratings, hourly</a></li>
+    <li><a href="#hrly_dialogs_ratings_fig_div">Avg dialog rating, hourly</a></li>
+    <li><a href="#dialog_time_figure_div">Dialog time(sec), Daily</a></li>
+    <li><a href="#dialog_time_figure_div">Avg number of utterances, Daily</a></li>
+    <!--<li>Skills Ratings by releases</li>-->
+    <!--<li>Skills Ratings by releases, EMA (0.5)</li>-->
+    <!--<li>Skills Ratings by releases, EMA (0.5), n_turns > 7</li>-->
+    <!--<li>Skills Ratings by releases, EMA (0.5), n_turns <= 7</li>-->
+    <li><a href="#shares_n_utt_div">Number of utterances, distribution, Daily</a></li>
+    <li><a href="#last_skill_fig_div">Last skill in dialog, all</a></li>
+    <li><a href="#rating_hists_fig_div">Ratings, hist</a></li>
+    <!--<li>Ratings by version</li>-->
+    <li><a href="#rating_by_n_turns_fig_div">Rating by n_turns for last days</a></li>
+    <li><a href="#daily_counts_relative_fig_div">Skill was selected, relative</a></li>
+    <li><a href="#moving_avg_fig_div">Skills Ratings, moving average over last 200 dialogs with number of turns > 1</a></li>
+    <li><a href="#skill_ratings_total_ma_n_turns_gt_7_fig_div">Skills Ratings, -_total, moving average over last 200 dialogs with number of turns > 1</a></li>
+    <!--<li>Skills Ratings, moving average over last 200 dialogs with number of turns <= 7</li>-->
+    <!--<li>Skills Ratings, -_total, moving average over last 200 dialogs with number of turns <= 7</li>-->
+    <li><a href="#dialog_finished_reason_fig_div">Dialog finished reason, all</a></li>
+    <li><a href="#dialog_finished_reason_w_rats_fig_div">Dialog finished reason, with rating</a></li>
+    
+    <li><a href="#dialog_finished_skill_rating_day_fig_div">Last skill in dialog, with rating</a></li>
+<!--    <li>Last skill in dialog, "Alexa, stop", "Alexa, exit", "Alexa, quit", with rating, Last 24h</li>-->
+<!--    <li>Dialogs with returned users, daily</li>-->
+</ul>
+
+<div id="hrly_dialogs_ratings_fig_div">{{hrly_dialogs_ratings_fig_div|safe }}</div>
+
+<div id="dialog_time_figure_div">{{dialog_time_figure_div|safe }}</div>
+
+<div id="shares_n_utt_div">{{shares_n_utt_div|safe }}</div>
+
+<div id="last_skill_fig_div">{{last_skill_fig_div|safe }}</div>
+
+<div id="rating_hists_fig_div">{{rating_hists_fig_div|safe }}</div>
+
+<div id="rating_by_n_turns_fig_div">{{rating_by_n_turns_fig_div|safe}}</div>
+
+<div id="daily_counts_relative_fig_div">{{daily_counts_relative_fig_div|safe}}</div>
+
+<div id="moving_avg_fig_div">{{moving_avg_fig_div|safe}}</div>
+
+<div id="skill_ratings_total_ma_n_turns_gt_7_fig_div">{{skill_ratings_total_ma_n_turns_gt_7_fig_div|safe}}</div>
+
+<div id="dialog_finished_reason_fig_div">{{dialog_finished_reason_fig_div|safe}}</div>
+
+<div id="dialog_finished_reason_w_rats_fig_div">{{dialog_finished_reason_w_rats_fig_div|safe}}</div>
+
+<div id="dialog_finished_skill_rating_day_fig_div">{{dialog_finished_skill_rating_day_fig_div|safe}}</div>
+
+<!--<div>{{last_skill_stop_exit_info_fig_div|safe}}</div>-->
+
+{% endblock %}
+</html>

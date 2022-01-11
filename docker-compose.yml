@@ -1,0 +1,26 @@
+version: '3.7'
+
+services:
+  analytics:
+    build:
+      context: .
+    depends_on:
+      - postgres
+    ports:
+      - $ANALYTICS_PORT:5000
+    command: python3 -m core.run server -ac https://7019.lnsigo.mipt.ru
+    restart: unless-stopped
+    environment:
+      DB_HOST: postgres
+      DB_USER: analytics
+      DB_PASSWORD: example
+      DB_NAME: analytics
+      ADMIN_USER: admin
+      ADMIN_PASSWORD: password
+
+  postgres:
+    image: postgres:10
+    environment:
+      POSTGRES_PASSWORD: example
+      POSTGRES_USER: analytics
+      POSTGRES_DB: analytics
