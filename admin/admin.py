@@ -331,7 +331,10 @@ def start_admin(session: Session, user: str, password: str, port: int, amazon_co
         try:
             conv = session.query(Conversation).filter_by(id=id).one()
         except NoResultFound:
-            conv = session.query(Conversation).filter_by(mgid=id).one()
+            try:
+                conv = session.query(Conversation).filter_by(mgid=id).one()
+            except NoResultFound:
+                return 'No dialog available. It may take up to two hours before the dialog appears via this link.'
         except Exception as e:
             return repr(e)
         utts = []
